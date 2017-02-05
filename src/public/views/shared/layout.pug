@@ -15,11 +15,11 @@ html
     script(src="/systemjs.config.js")
     
     script.
-        System.import('src/client/app/app.js').catch(function(err){ console.error(err); });
+        System.import('src/app/app.js').catch(function(err){ console.error(err); });
         
   body
 
-    .container      
+    .container.buffer-top-20
         include ../partials/header
 
         block content

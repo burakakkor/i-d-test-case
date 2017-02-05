@@ -1,0 +1,13 @@
+/* buffer-top, margin-top by 10px * i */
+@for $i from 1 through 10 {
+    .buffer-top-#{$i*10} {
+        margin-top: #{$i*10}px;
+    }
+}
+
+/* buffer-bottom, margin-bottom by 10px * i */
+@for $i from 1 through 10 {
+    .buffer-bottom-#{$i*10} {
+        margin-bottom: #{$i*10}px;
+    }
+}

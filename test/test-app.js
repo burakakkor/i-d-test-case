@@ -1,4 +1,4 @@
-var app = require('../app');
+var app = require('../src/server/app');
 var request = require("supertest").agent(app.listen());
 var should = require('should');
 

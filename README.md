@@ -2,7 +2,7 @@
 
 **Travis** 
 
-[![Build Status](https://travis-ci.org/burakakkor/i-d-test-case.svg?branch=master)](https://travis-ci.org/burakakkor/i-d-test-case.svg?branch=master)
+[![Build Status](https://travis-ci.org/burakakkor/i-d-test-case.svg?branch=master)](https://travis-ci.org/burakakkor/i-d-test-case)
 
 **Appveyor** 
 

@@ -1,18 +1,27 @@
 var express = require('express');
 var path = require('path');
+var sass = require('node-sass-middleware');
 
 var app = express();
 
-var port = process.env.PORT || (process.argv[2] || 3000);
+var port = process.env.PORT || 3000;
 
 port = (typeof port === "number") ? port : 3000;
+
+app.use(sass({
+  src: path.join(__dirname, 'src/client/app/assets/css'),
+  dest: path.join(__dirname, 'src/client/app/assets/css/dist'),
+  force: true,
+  outputStyle: 'compressed',
+  prefix: '/assets/css'
+}));
 
 app.set('port', port);
 app.set('views', path.join(__dirname, 'src/client/app/views'));
 app.set('view engine', 'pug');
 
 app.use('/assets', express.static(path.join(__dirname, 'src/client/app/assets')));
-// app.use('/node_modules', express.static(path.join(__dirname, 'node_modules')));
+app.use('/lib', express.static(path.join(__dirname, 'node_modules')));
 app.use('/', express.static(path.join(__dirname, '/')));
 
 require('./config/routes')(app);

@@ -1,5 +1,8 @@
 language: node_js
 node_js:
   - 6
+after_success:
+  - npm run cover
+  - npm run report-cover
 notifications:
-email: none
+  email: none

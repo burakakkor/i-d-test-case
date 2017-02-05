@@ -9,8 +9,9 @@
   "author": "Burak Akkor",
   "scripts": {
     "start": "node app.js",
-    "test": "mocha --reporter spec",
-    "watch": "gulp watch",
+    "test": "mocha --reporter spec --timeout 5000",
+    "watch": "gulp default",
+    "watchfiles": "gulp files",
     "tsc": "tsc",
     "pree2e": "webdriver-manager update",
     "e2e": "tsc && concurrently \"http-server -s\" \"protractor protractor.config.js\" --kill-others --success first"
@@ -39,9 +40,11 @@
     "mocha": "^3.1.2",
     "supertest": "^2.0.1",
     "typescript": "~2.0.10",
+    "should": "^11.2.0",
 
     "gulp": "^3.9.1",
     "gulp-pug": "^3.2.0",
+    "gulp-mocha": "^3.0.1",
 
     "concurrently": "^3.1.0",
     "lite-server": "^2.2.2",

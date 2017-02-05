@@ -1,0 +1,145 @@
+[
+  { 
+    "name": "Almond Toe Court Shoes", 
+	  "color": "Patent Black",
+    "gender": { "id": 1, "name": "Women"  },
+    "category": { "id": 1, "name": "Women's Footwear" },
+    "price": "99.00", 
+		"isOnSale": false,
+		"salePrice": "0.00",
+    "currency": "GBP", 
+    "stock": 5
+  },
+  { 
+    "name": "Suede Shoes", 
+	  "color": "Blue",
+    "gender": { "id": 1, "name": "Women"  },
+    "category": { "id": 1, "name": "Women's Footwear" },
+    "price": "42.00", 
+		"isOnSale": false,
+		"salePrice": "0.00",
+    "currency": "GBP", 
+    "stock": 4
+  },
+  { 
+    "name": "Leather Driver Saddle Loafers", 
+		"color": "Tan",
+    "gender": { "id": 1, "name": "Male"  },
+    "category": { "id": 1, "name": "Men's Footwear" },
+    "price": "34.00", 
+		"isOnSale": false,
+		"salePrice": "0.00",
+    "currency": "GBP", 
+    "stock": 12
+  },
+  { 
+    "name": "Flip Flops", 
+		"color": "Red",
+    "gender": { "id": 1, "name": "Male"  },
+    "category": { "id": 1, "name": "Men's Footwear" },
+    "price": "19.00", 
+		"isOnSale": false,
+		"salePrice": "0.00",
+    "currency": "GBP", 
+    "stock": 6
+  },
+  { 
+    "name": "Flip Flops", 
+		"color": "Blue",
+    "gender": { "id": 1, "name": "Male"  },
+    "category": { "id": 1, "name": "Men's Footwear" },
+    "price": "19.00", 
+		"isOnSale": false,
+		"salePrice": "0.00",
+    "currency": "GBP", 
+    "stock": 0
+  },
+  { 
+    "name": "Gold Button Cardigan", 
+		"color" : "Black",
+    "gender": { "id": 1, "name": "Male"  },
+    "category": { "id": 1, "name": "Women's Casualwear" },
+    "price": "167.00", 
+		"isOnSale": false,
+		"salePrice": "0.00",
+    "currency": "GBP", 
+    "stock": 6
+  },
+  { 
+    "name": "Cotton Shorts", 
+		"color" : "Medium Red",
+    "gender": { "id": 1, "name": "Male"  },
+    "category": { "id": 1, "name": "Women's Casualwear" },
+    "price": "30.00", 
+		"isOnSale": false,
+		"salePrice": "0.00",
+    "currency": "GBP", 
+    "stock": 5
+  },
+  { 
+    "name": "Fine Stripe Short Sleeve Shirt", 
+		"color" : "Grey",
+    "gender": { "id": 1, "name": "Male"  },
+    "category": { "id": 1, "name": "Men’s Casualwear" },
+    "price": "49.99", 
+		"isOnSale": false,
+		"salePrice": "0.00",
+    "currency": "GBP", 
+    "stock": 9
+  },
+  { 
+    "name": "Fine Stripe Short Sleeve Shirt", 
+		"color" : "Green",
+    "gender": { "id": 1, "name": "Male"  },
+    "category": { "id": 1, "name": "Men’s Casualwear" },
+    "price": "49.99", 
+		"isOnSale": true,
+		"salePrice": "39.99",
+    "currency": "GBP", 
+    "stock": 3
+  },
+  {
+    "name": "Sharkskin Waistcoat", 
+		"color" : "Charcoal",
+    "gender": { "id": 1, "name": "Male"  },
+    "category": { "id": 1, "name": "Men’s Formalwear" },
+    "price": "75.00", 
+		"isOnSale": false,
+		"salePrice": "0.00",
+    "currency": "GBP", 
+    "stock": 2
+  },
+  { 
+    "name": "Lightweight Patch Pocket Blazer", 
+		"color" : "Deer",
+    "gender": { "id": 1, "name": "Male"  },
+    "category": { "id": 1, "name": "Men’s Formalwear" },
+    "price": "175.50", 
+		"isOnSale": false,
+		"salePrice": "0.00",
+    "currency": "GBP", 
+    "stock": 1
+  },
+  { 
+    "name": "Almond Toe Court Shoes", 
+		"color" : "Black",
+    "gender": { "id": 1, "name": "Male"  },
+    "category": { "id": 1, "name": "Women's Formalwear" },
+    "price": "270.00", 
+		"isOnSale": false,
+		"salePrice": "0.00",
+    "currency": "GBP", 
+    "stock": 10
+  },
+  { 
+    "name": "Mid Twist Cut-Out Dress", 
+		"color" : "Pink",
+    "gender": { "id": 1, "name": "Male"  },
+    "category": { "id": 1, "name": "Women's Formalwear" },
+    "price": "540.00", 
+		"isOnSale": false,
+		"salePrice": "0.00",
+    "currency": "GBP", 
+    "stock": 5
+  }
+]

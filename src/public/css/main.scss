@@ -2,7 +2,16 @@
 @import "lib/font-awesome/font-awesome";
 @import "utils";
 
+@import "variables";
+@import "partials/header";
+@import "partials/partial-index";
+@import "partials/footer";
+
 html {
     position: relative;
     min-height: 100%;
+}
+
+body {
+    background-color: $color-navy;
 }

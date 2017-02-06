@@ -16,7 +16,7 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'partial-index',
-            templateUrl: './src/client/app/views/dist/partials/partial-index.html',
+            templateUrl: './src/public/views/dist/partials/partial-index.html',
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

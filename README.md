@@ -16,7 +16,7 @@
 
 *build & run;*
 
-`first we need to download` *[nodejs](https://nodejs.org/en/download/)*
+`first we need to download and install` *[nodejs](https://nodejs.org/en/download/)*
 
 *and then we need to;*
 

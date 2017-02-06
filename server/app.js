@@ -22,6 +22,7 @@ app.set('view engine', 'pug');
 
 app.use('/public', express.static(path.join(__dirname, '../src/public')));
 app.use('/lib', express.static(path.join(__dirname, '../node_modules')));
+app.use('/', express.static(path.join(__dirname, '../')));
 
 require('./config/routes')(app);
 

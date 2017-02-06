@@ -8,7 +8,7 @@
   },
   "author": "Burak Akkor",
   "scripts": {
-    "start": "tsc && node app.js",
+    "start": "tsc && npm run pugtohtml && node server/app.js",
     "test": "mocha --reporter spec --timeout 5000",
     "cover": "istanbul cover node_modules/mocha/bin/_mocha -- -R spec",
     "report-cover": "cat ./coverage/lcov.info | coveralls",
@@ -17,7 +17,7 @@
     "tsc": "tsc",
     "pree2e": "webdriver-manager update",
     "e2e": "tsc && concurrently \"http-server -s\" \"protractor protractor.config.js\" --kill-others --success first",
-    "pugtohtml": "pug --output-style compressed -o src/public/views/dist/ src/public/views/pug/*.pug"
+    "pugtohtml": "pug --output-style compressed -o src/public/views/dist/ src/public/views/pug"
   },
   "dependencies": {
     "@angular/common": "~2.4.0",

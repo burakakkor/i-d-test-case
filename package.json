@@ -8,7 +8,7 @@
   },
   "author": "Burak Akkor",
   "scripts": {
-    "start": "node app.js",
+    "start": "tsc && node app.js",
     "test": "mocha --reporter spec --timeout 5000",
     "cover": "istanbul cover node_modules/mocha/bin/_mocha -- -R spec",
     "report-cover": "cat ./coverage/lcov.info | coveralls",

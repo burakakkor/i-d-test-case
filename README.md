@@ -16,12 +16,13 @@
 
 *build & run;*
 
-first we need to download *[nodejs](https://nodejs.org/en/download/).*
+`first we need to download` *[nodejs](https://nodejs.org/en/download/)*
 
-and then we need to;
+*and then we need to;*
 
-    `javascript
-        if (isAwesome){
-            return true
-        }
-    `
+    npm install
+
+
+*following terminal command is;*
+
+    npm start

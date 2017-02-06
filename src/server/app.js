@@ -17,7 +17,7 @@ app.use(sass({
 }));
 
 app.set('port', port);
-app.set('views', path.join(__dirname, 'src/public/views'));
+app.set('views', path.join(__dirname, 'src/public/views/pug'));
 app.set('view engine', 'pug');
 
 app.use('/public', express.static(path.join(__dirname, 'src/public')));

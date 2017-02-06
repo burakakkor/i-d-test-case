@@ -11,3 +11,18 @@
 **Coveralls**
 
 [![Coverage Status](https://coveralls.io/repos/github/burakakkor/i-d-test-case/badge.svg?branch=master)](https://coveralls.io/github/burakakkor/i-d-test-case?branch=master)
+
+---
+
+*build & run;*
+
+`first we need to download` *[nodejs](https://nodejs.org/en/download/)*
+
+*and then we need to;*
+
+    npm install
+
+
+*following terminal command is;*
+
+    npm start

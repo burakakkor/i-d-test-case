@@ -9,20 +9,19 @@ var port = process.env.PORT || 3000;
 port = (typeof port === "number") ? port : 3000;
 
 app.use(sass({
-  src: path.join(__dirname, 'src/public/css'),
-  dest: path.join(__dirname, 'src/public/css/dist'),
+  src: path.join(__dirname, '../src/public/css'),
+  dest: path.join(__dirname, '../src/public/css/dist'),
   force: true,
   outputStyle: 'compressed',
   prefix: '/public/css'
 }));
 
 app.set('port', port);
-app.set('views', path.join(__dirname, 'src/public/views'));
+app.set('views', path.join(__dirname, '../src/public/views/pug'));
 app.set('view engine', 'pug');
 
-app.use('/public', express.static(path.join(__dirname, 'src/public')));
-app.use('/lib', express.static(path.join(__dirname, 'node_modules')));
-app.use('/', express.static(path.join(__dirname, '/')));
+app.use('/public', express.static(path.join(__dirname, '../src/public')));
+app.use('/lib', express.static(path.join(__dirname, '../node_modules')));
 
 require('./config/routes')(app);
 

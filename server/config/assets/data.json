@@ -1,17 +1,3 @@
-/*gender
-  "Men": 0,
-  "Women": 1
-*/
-
-/*categories
-  "Men's Footwear": 0,
-  "Men’s Casualwear": 1,
-  "Men’s Formalwear": 2,
-  "Women's Footwear": 3,
-  "Women's Casualwear": 4,
-  "Women's Formalwear": 5
-*/
-
 [
   { 
     "id": 0,

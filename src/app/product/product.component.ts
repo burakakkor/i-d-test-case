@@ -20,11 +20,7 @@ export class ProductComponent implements OnInit {
   getHeroes(): void {
     this.productService
         .getHeroes()
-        .then(products => {
-            console.log(products);
-
-            this.products = products;
-        });
+        .then(products => this.products = products);
   }
 
 //   add(name: string): void {

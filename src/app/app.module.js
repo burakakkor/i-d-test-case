@@ -12,7 +12,9 @@ var platform_browser_1 = require("@angular/platform-browser");
 var app_routing_module_1 = require("./app-routing.module");
 var app_component_1 = require("./app.component");
 var product_component_1 = require("./product/product.component");
+var cart_component_1 = require("./cart/cart.component");
 var product_service_1 = require("./product/product.service");
+var cart_service_1 = require("./cart/cart.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -27,8 +29,8 @@ AppModule = __decorate([
             http_1.JsonpModule,
             app_routing_module_1.AppRoutingModule
         ],
-        declarations: [app_component_1.AppComponent, product_component_1.ProductComponent],
-        providers: [product_service_1.ProductService],
+        declarations: [app_component_1.AppComponent, product_component_1.ProductComponent, cart_component_1.CartComponent],
+        providers: [product_service_1.ProductService, cart_service_1.CartService],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

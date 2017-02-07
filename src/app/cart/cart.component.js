@@ -10,40 +10,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var product_service_1 = require("./product.service");
-var ProductComponent = (function () {
-    function ProductComponent(productService, router) {
-        this.productService = productService;
+var cart_service_1 = require("./cart.service");
+var CartComponent = (function () {
+    function CartComponent(cartService, router) {
+        this.cartService = cartService;
         this.router = router;
     }
-    ProductComponent.prototype.getHeroes = function () {
+    CartComponent.prototype.getCart = function () {
         var _this = this;
-        this.productService
-            .getHeroes()
-            .then(function (products) { return _this.products = products; });
+        this.cartService
+            .getCart()
+            .then(function (cart) { return _this.cart = cart; });
     };
-    //   add(name: string): void {
-    //     name = name.trim();
-    //     if (!name) { return; }
-    //     this.heroService.create(name)
-    //       .then(product => {
-    //         this.products.push(product);
-    //         this.selectedProduct = null;
-    //       });
-    //   }
-    ProductComponent.prototype.ngOnInit = function () {
-        this.getHeroes();
+    CartComponent.prototype.ngOnInit = function () {
+        this.getCart();
     };
-    return ProductComponent;
+    return CartComponent;
 }());
-ProductComponent = __decorate([
+CartComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
-        selector: 'partial-products',
+        selector: 'partial-cart',
         templateUrl: '../../public/views/dist/partials/partial-products.html'
     }),
-    __metadata("design:paramtypes", [product_service_1.ProductService,
+    __metadata("design:paramtypes", [cart_service_1.CartService,
         router_1.Router])
-], ProductComponent);
-exports.ProductComponent = ProductComponent;
-//# sourceMappingURL=product.component.js.map
+], CartComponent);
+exports.CartComponent = CartComponent;
+//# sourceMappingURL=cart.component.js.map

@@ -16,7 +16,10 @@ export class CartService {
   getCart(): Promise<Cart> {
     return this.http.get(this.cartUrl)
                .toPromise()
-               .then(response => response.json())
+               .then(response => {
+                 console.log(response.json() as Cart);
+                  return response.json() as Cart;
+               })
                .catch(this.handleError);
   }
 

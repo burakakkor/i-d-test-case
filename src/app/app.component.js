@@ -8,14 +8,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var core_1 = require("@angular/core");
 var AppComponent = (function () {
     function AppComponent() {
-        this.name = 'Angular';
     }
     return AppComponent;
 }());
 AppComponent = __decorate([
     core_1.Component({
-        selector: 'partial-index',
-        templateUrl: './src/public/views/dist/partials/partial-index.html',
+        selector: 'sneijder-app',
+        templateUrl: '../../public/views/dist/partials/sneijder.html'
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;

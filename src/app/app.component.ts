@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'partial-index',
-  templateUrl: './src/public/views/dist/partials/partial-index.html',
+  selector: 'sneijder-app',
+  templateUrl: '../../public/views/dist/partials/sneijder.html'
 })
-export class AppComponent  { name = 'Angular'; }
+export class AppComponent  { }

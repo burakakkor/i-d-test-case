@@ -16,31 +16,26 @@ var ProductComponent = (function () {
         this.productService = productService;
         this.router = router;
     }
-    ProductComponent.prototype.getHeroes = function () {
+    ProductComponent.prototype.getProducts = function () {
         var _this = this;
         this.productService
-            .getHeroes()
+            .getProducts()
             .then(function (products) { return _this.products = products; });
     };
-    //   add(name: string): void {
-    //     name = name.trim();
-    //     if (!name) { return; }
-    //     this.heroService.create(name)
-    //       .then(product => {
-    //         this.products.push(product);
-    //         this.selectedProduct = null;
-    //       });
-    //   }
+    ProductComponent.prototype.addProductToCart = function (product) {
+        this.productService
+            .addProductToCart(product);
+    };
     ProductComponent.prototype.ngOnInit = function () {
-        this.getHeroes();
+        this.getProducts();
     };
     return ProductComponent;
 }());
 ProductComponent = __decorate([
     core_1.Component({
+        selector: 'products',
         moduleId: module.id,
-        selector: 'partial-products',
-        templateUrl: '../../public/views/dist/partials/partial-products.html'
+        templateUrl: '../../public/views/dist/partials/products.html'
     }),
     __metadata("design:paramtypes", [product_service_1.ProductService,
         router_1.Router])

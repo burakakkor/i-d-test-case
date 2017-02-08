@@ -15,12 +15,22 @@ var ProductService = (function () {
     function ProductService(http) {
         this.http = http;
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        this.dataUrl = 'api/data'; // URL to web api
+        this.dataUrl = 'api/data';
+        this.cartUrl = 'api/cart';
     }
-    ProductService.prototype.getHeroes = function () {
+    ProductService.prototype.getProducts = function () {
         return this.http.get(this.dataUrl)
             .toPromise()
             .then(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
+    ProductService.prototype.addProductToCart = function (product) {
+        var body = JSON.stringify(product);
+        var headers = new http_1.Headers({ 'content-type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this.http.post(this.cartUrl, body, options)
+            .toPromise()
+            .then(function (response) { return response; })
             .catch(this.handleError);
     };
     ProductService.prototype.handleError = function (error) {

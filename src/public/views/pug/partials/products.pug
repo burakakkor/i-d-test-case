@@ -1,0 +1,8 @@
+.container
+  .row.marketing
+    .col-md-4.buffer-bottom-20("*ngFor"="let product of products")
+      .product-box
+        h4 {{product.name}}
+        h6.float-left {{product.color}}
+        p.text-right.float-right {{product.price | currency: product.currency: true}}
+        button.btn.btn-success(type="button", (click)="addProductToCart(product)") Add to Cart

@@ -29,9 +29,9 @@ var CartComponent = (function () {
 }());
 CartComponent = __decorate([
     core_1.Component({
+        selector: 'cart',
         moduleId: module.id,
-        selector: 'partial-cart',
-        templateUrl: '../../public/views/dist/partials/partial-products.html'
+        templateUrl: '../../public/views/dist/partials/cart.html'
     }),
     __metadata("design:paramtypes", [cart_service_1.CartService,
         router_1.Router])

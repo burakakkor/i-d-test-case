@@ -9,14 +9,18 @@ import { Cart } from './cart';
 export class CartService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  private dataUrl = 'api/data';  // URL to web api
+  private cartUrl = 'api/cart';  // URL to web api
 
   constructor(private http: Http) { }
 
   getCart(): Promise<Cart> {
-    return this.http.get(this.dataUrl)
+    return this.http.get(this.cartUrl)
                .toPromise()
-               .then(response => response.json() as Cart)
+               .then(response => {
+                  console.log(response);
+
+                  return response.json();
+               })
                .catch(this.handleError);
   }
 

@@ -5,9 +5,9 @@ import { Cart }           from './cart';
 import { CartService }    from './cart.service';
 
 @Component({
+  selector: 'cart',
   moduleId: module.id,
-  selector: 'partial-cart',
-  templateUrl: '../../public/views/dist/partials/partial-products.html'
+  templateUrl: '../../public/views/dist/partials/cart.html'
 })
 export class CartComponent implements OnInit {
   cart: Cart;

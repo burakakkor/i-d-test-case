@@ -1,5 +1,11 @@
 @import "../variables";
 
 header {
-    color: $color-cloud;
+    color: $color-cloud !important;
+
+    h3, a {
+        color: $color-cloud !important;
+    }
+
+    a { font-size: 24px;}
 }

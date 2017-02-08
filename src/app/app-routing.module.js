@@ -8,8 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var product_component_1 = require("./product/product.component");
+var cart_component_1 = require("./cart/cart.component");
 var routes = [
-    { path: 'api/data', component: product_component_1.ProductComponent }
+    { path: '', component: product_component_1.ProductComponent },
+    { path: 'cart', component: cart_component_1.CartComponent }
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {
@@ -18,7 +20,7 @@ var AppRoutingModule = (function () {
 }());
 AppRoutingModule = __decorate([
     core_1.NgModule({
-        imports: [router_1.RouterModule.forRoot(routes)],
+        imports: [router_1.RouterModule.forRoot(routes, { useHash: true })],
         exports: [router_1.RouterModule]
     })
 ], AppRoutingModule);

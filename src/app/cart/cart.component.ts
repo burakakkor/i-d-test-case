@@ -19,7 +19,11 @@ export class CartComponent implements OnInit {
   getCart(): void {
     this.cartService
         .getCart()
-        .then(cart => this.cart = cart);
+        .then(cart => {
+          console.log(cart);
+          this.cart = cart;
+          console.log(this.cart);
+        });
   }
 
   ngOnInit(): void {

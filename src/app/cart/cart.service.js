@@ -15,15 +15,12 @@ var CartService = (function () {
     function CartService(http) {
         this.http = http;
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        this.cartUrl = 'api/cart'; // URL to web api
+        this.cartUrl = 'api/cart';
     }
     CartService.prototype.getCart = function () {
         return this.http.get(this.cartUrl)
             .toPromise()
-            .then(function (response) {
-            console.log(response);
-            return response.json();
-        })
+            .then(function (response) { return response.json(); })
             .catch(this.handleError);
     };
     CartService.prototype.handleError = function (error) {

@@ -20,7 +20,11 @@ var CartComponent = (function () {
         var _this = this;
         this.cartService
             .getCart()
-            .then(function (cart) { return _this.cart = cart; });
+            .then(function (cart) {
+            console.log(cart);
+            _this.cart = cart;
+            console.log(_this.cart);
+        });
     };
     CartComponent.prototype.ngOnInit = function () {
         this.getCart();

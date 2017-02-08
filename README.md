@@ -26,3 +26,11 @@
 *following terminal command is;*
 
     npm start
+
+
+*gulp*
+....npm watch
+
+*following terminal command is;*
+
+    npm start

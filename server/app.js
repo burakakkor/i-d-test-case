@@ -9,7 +9,7 @@ var port = process.env.PORT || 3000;
 port = (typeof port === "number") ? port : 3000;
 
 app.use(sass({
-  src: path.join(__dirname, '../src/public/css'),
+  src: path.join(__dirname, '../src/public/css/lib/main'),
   dest: path.join(__dirname, '../src/public/css/dist'),
   force: true,
   outputStyle: 'compressed',

@@ -1,10 +1,10 @@
-@import "lib/bootstrap/bootstrap";
-@import "lib/font-awesome/font-awesome";
+@import "../bootstrap/bootstrap";
 @import "utils";
 
 @import "variables";
 @import "partials/header";
 @import "partials/partial-index";
+@import "partials/partial-products";
 @import "partials/footer";
 
 html {

@@ -58,6 +58,14 @@ har-validator
 he
 hs
 http-server
+istanbul
+coveralls
+escodegen
+esgenerate
+esparse
+esvalidate
+handlebars
+js-yaml
 in-install
 in-publish
 jasmine

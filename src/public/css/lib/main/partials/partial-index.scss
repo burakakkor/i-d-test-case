@@ -1,5 +1,8 @@
+@import "../variables";
+
 .partial-index {
     color: $color-cloud;
+    background-color: $color-cloud;
     border: 1px solid $color-navy-light;
     border-radius: .3rem;
     padding-top: 10px;

@@ -21,7 +21,6 @@ var CartService = (function () {
         return this.http.get(this.cartUrl)
             .toPromise()
             .then(function (response) {
-            console.log(response);
             return response.json();
         })
             .catch(this.handleError);

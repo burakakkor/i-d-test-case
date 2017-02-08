@@ -2,3 +2,5 @@
   .row.marketing
     .col-lg-12
       h3.text-muted Cart
+    .col-lg-6("*ngFor"="let item of cart")
+      h4 {{item.name}}

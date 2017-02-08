@@ -1,7 +1,7 @@
 var express = require('express');
 var path = require('path');
 var sass = require('node-sass-middleware');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
 
 var app = express();
 

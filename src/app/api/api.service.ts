@@ -11,6 +11,7 @@ export class APIService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
   private cartUrl = 'api/cart';
+  private voucherUrl = '/api/voucher';
 
   constructor(private http: Http) { }
 
@@ -26,6 +27,13 @@ export class APIService {
     return this.http.delete(this.cartUrl + '/' + id)
                .toPromise()
                .then(response => response.json() as Cart)
+               .catch(this.handleError);
+	}
+
+  checkVoucher(code): Promise<Response> {
+    return this.http.post(this.voucherUrl, {code: code})
+               .toPromise()
+               .then(response => response)
                .catch(this.handleError);
 	}
 

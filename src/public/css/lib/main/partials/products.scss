@@ -17,4 +17,13 @@
     position:absolute;
     right:10px;
   }
+
+  .on-sale-price {
+    color: $color-text-on-sale;
+    text-decoration: line-through;
+  }
+}
+
+.on-sale-box {
+  border: 1px solid $color-text-on-sale;
 }

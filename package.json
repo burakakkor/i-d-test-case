@@ -45,6 +45,7 @@
     "canonical-path": "0.0.2",
     "concurrently": "^3.1.0",
     "coveralls": "^2.11.15",
+    "deep-equal": "^1.0.1",
     "gulp": "^3.9.1",
     "gulp-cli": "^1.2.2",
     "gulp-mocha": "^3.0.1",

@@ -5,6 +5,8 @@ import { Cart }           from './cart';
 import { CartService }    from './cart.service';
 import { APIService } from '../api/api.service';
 
+import { ToasterService } from 'angular2-toaster';
+
 @Component({
   selector: 'cart',
   moduleId: module.id,
@@ -16,6 +18,7 @@ export class CartComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private apiService: APIService,
+    private toasterService: ToasterService,
     private router: Router) { }
 
   getCart(): void {
@@ -27,7 +30,25 @@ export class CartComponent implements OnInit {
   removeProductFromCart(id): void {
     this.apiService
         .removeProductFromCart(id)
-        .then(cart => this.cart = cart); //TODO:notify
+        .then(cart => {
+          this.toasterService.pop('warning', 'Item removed from your cart!', '');
+          this.cart = cart;
+        });
+  }
+
+  checkVoucher(code): void {
+    this.apiService
+      .checkVoucher(code)
+      .then(response => {
+        this.toasterService.pop('success', 'Discount!', '');
+      })
+      .catch(response => {
+        this.toasterService.pop('error', 'Invalid voucher code.', '');
+      });
+  }
+
+  checkout(): void {
+    
   }
 
   ngOnInit(): void {

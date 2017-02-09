@@ -3,6 +3,8 @@ import { FormsModule }  from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { ToasterModule, ToasterService } from 'angular2-toaster';
+
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
@@ -20,10 +22,11 @@ import { APIService } from './api/api.service';
     FormsModule,
     HttpModule,
     JsonpModule,
+    ToasterModule,
     AppRoutingModule
   ],
   declarations: [ AppComponent, ProductComponent, CartComponent ],
-  providers:    [ ProductService, CartService, APIService ],
+  providers:    [ ProductService, CartService, APIService, ToasterService ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

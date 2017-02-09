@@ -5,6 +5,8 @@ import { Product }           from './product';
 import { ProductService }    from './product.service';
 import { APIService } from '../api/api.service';
 
+import { ToasterService } from 'angular2-toaster';
+
 @Component({
   selector: 'products',
   moduleId: module.id,
@@ -17,6 +19,7 @@ export class ProductComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private apiService: APIService,
+    private toasterService: ToasterService,
     private router: Router) { }
 
   getProducts(): void {
@@ -29,9 +32,9 @@ export class ProductComponent implements OnInit {
     this.apiService
         .addProductToCart(product)
         .then(response => {
-
+          this.toasterService.pop('success', 'Item added to your cart!', '');
           return response;
-        }); //TODO:notify
+        });
   }
 
   ngOnInit(): void {

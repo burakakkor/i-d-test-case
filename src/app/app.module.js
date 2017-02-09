@@ -9,6 +9,7 @@ var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
 var platform_browser_1 = require("@angular/platform-browser");
+var angular2_toaster_1 = require("angular2-toaster");
 var app_routing_module_1 = require("./app-routing.module");
 var app_component_1 = require("./app.component");
 var product_component_1 = require("./product/product.component");
@@ -28,10 +29,11 @@ AppModule = __decorate([
             forms_1.FormsModule,
             http_1.HttpModule,
             http_1.JsonpModule,
+            angular2_toaster_1.ToasterModule,
             app_routing_module_1.AppRoutingModule
         ],
         declarations: [app_component_1.AppComponent, product_component_1.ProductComponent, cart_component_1.CartComponent],
-        providers: [product_service_1.ProductService, cart_service_1.CartService, api_service_1.APIService],
+        providers: [product_service_1.ProductService, cart_service_1.CartService, api_service_1.APIService, angular2_toaster_1.ToasterService],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

@@ -3,7 +3,8 @@ var path = require('path');
 var Cookies = require('cookies');
 var _ = require('lodash');
 
-var _data = JSON.parse(fs.readFileSync(path.join(__dirname, '../config/assets/data.json')), 'utf8');
+var _data = JSON.parse(fs.readFileSync(path.join(__dirname, '../config/assets/data.json')), 'utf8'),
+    _vouchers = JSON.parse(fs.readFileSync(path.join(__dirname, '../config/assets/vouchers.json')), 'utf8');
 
 var getItemsFromCart = function(cart) {
   return JSON.parse(cart).items;
@@ -34,7 +35,7 @@ module.exports = {
     var cookies = new Cookies(req, res);
     var cart = cookies.get("cart");
 
-    var items = [], result = {};;
+    var items = [], result = {};
 
     if (cart) {
       items = getItemsFromCart(cart);
@@ -44,7 +45,7 @@ module.exports = {
 
     res.json(result);
   },
-  postCart: (req, res) => {
+  addProductToCart: (req, res) => {
     var cookies = new Cookies(req, res);
     var cart = cookies.get("cart");
 
@@ -80,7 +81,7 @@ module.exports = {
 
     res.sendStatus(200);
   },
-  deleteCart: (req, res) => {
+  deleteProductFromCart: (req, res) => {
     var cookies = new Cookies(req, res);
     var cart = cookies.get("cart");
 
@@ -125,4 +126,11 @@ module.exports = {
 
     res.json(result);
   },
+  checkVoucher: (req, res) => {
+    // code from body. check api.js
+    var code = req.body.code;
+    var statusCode = _.includes(_vouchers, code) ? 200 : 500;
+
+    res.sendStatus(statusCode);
+  }
 }

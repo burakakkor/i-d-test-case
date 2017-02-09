@@ -12,10 +12,12 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var product_service_1 = require("./product.service");
 var api_service_1 = require("../api/api.service");
+var angular2_toaster_1 = require("angular2-toaster");
 var ProductComponent = (function () {
-    function ProductComponent(productService, apiService, router) {
+    function ProductComponent(productService, apiService, toasterService, router) {
         this.productService = productService;
         this.apiService = apiService;
+        this.toasterService = toasterService;
         this.router = router;
     }
     ProductComponent.prototype.getProducts = function () {
@@ -25,11 +27,13 @@ var ProductComponent = (function () {
             .then(function (products) { return _this.products = products; });
     };
     ProductComponent.prototype.addProductToCart = function (product) {
+        var _this = this;
         this.apiService
             .addProductToCart(product)
             .then(function (response) {
+            _this.toasterService.pop('success', 'Item added to your cart!', '');
             return response;
-        }); //TODO:notify
+        });
     };
     ProductComponent.prototype.ngOnInit = function () {
         this.getProducts();
@@ -44,6 +48,7 @@ ProductComponent = __decorate([
     }),
     __metadata("design:paramtypes", [product_service_1.ProductService,
         api_service_1.APIService,
+        angular2_toaster_1.ToasterService,
         router_1.Router])
 ], ProductComponent);
 exports.ProductComponent = ProductComponent;

@@ -12,10 +12,12 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var cart_service_1 = require("./cart.service");
 var api_service_1 = require("../api/api.service");
+var angular2_toaster_1 = require("angular2-toaster");
 var CartComponent = (function () {
-    function CartComponent(cartService, apiService, router) {
+    function CartComponent(cartService, apiService, toasterService, router) {
         this.cartService = cartService;
         this.apiService = apiService;
+        this.toasterService = toasterService;
         this.router = router;
     }
     CartComponent.prototype.getCart = function () {
@@ -28,7 +30,23 @@ var CartComponent = (function () {
         var _this = this;
         this.apiService
             .removeProductFromCart(id)
-            .then(function (cart) { return _this.cart = cart; }); //TODO:notify
+            .then(function (cart) {
+            _this.toasterService.pop('warning', 'Item removed from your cart!', '');
+            _this.cart = cart;
+        });
+    };
+    CartComponent.prototype.checkVoucher = function (code) {
+        var _this = this;
+        this.apiService
+            .checkVoucher(code)
+            .then(function (response) {
+            _this.toasterService.pop('success', 'Discount!', '');
+        })
+            .catch(function (response) {
+            _this.toasterService.pop('error', 'Invalid voucher code.', '');
+        });
+    };
+    CartComponent.prototype.checkout = function () {
     };
     CartComponent.prototype.ngOnInit = function () {
         this.getCart();
@@ -43,6 +61,7 @@ CartComponent = __decorate([
     }),
     __metadata("design:paramtypes", [cart_service_1.CartService,
         api_service_1.APIService,
+        angular2_toaster_1.ToasterService,
         router_1.Router])
 ], CartComponent);
 exports.CartComponent = CartComponent;

@@ -16,6 +16,7 @@ var APIService = (function () {
         this.http = http;
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         this.cartUrl = 'api/cart';
+        this.voucherUrl = '/api/voucher';
     }
     APIService.prototype.addProductToCart = function (id) {
         return this.http.post(this.cartUrl, { id: id })
@@ -27,6 +28,12 @@ var APIService = (function () {
         return this.http.delete(this.cartUrl + '/' + id)
             .toPromise()
             .then(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
+    APIService.prototype.checkVoucher = function (code) {
+        return this.http.post(this.voucherUrl, { code: code })
+            .toPromise()
+            .then(function (response) { return response; })
             .catch(this.handleError);
     };
     APIService.prototype.handleError = function (error) {

@@ -3,9 +3,9 @@
     .col-lg-12
       h3.text-muted Cart
     .col-lg-12
-      .cart("*ngIf"="cart?.items.length > 0")
+      .cart("*ngIf"="cart?.items?.length > 0")
         ul.cart-items.col-md-12
-          li.row.buffer-bottom-10("*ngFor"="let cartItem of cart.items")
+          li.row.buffer-bottom-10("*ngFor"="let cartItem of cart?.items")
             .col-md-8.text-left
               span {{cartItem.name}}, ({{cartItem.price | currency: cart?.currency: true}} x {{cartItem.count}})
             .col-md-4.text-right.pr-0
@@ -15,14 +15,16 @@
         .checkout.buffer-top-20
           .row.buffer-bottom-20
             .col-md-5.push-md-7
-              .input-group                
+              .input-group
                 input.form-control(type="text", placeholder="Voucher Code", [(ngModel)]="code")
                 span.input-group-btn
-                  button.btn.btn-secondary(type="button", (click)="checkVoucher(code)")
+                  button.btn.btn-secondary(type="button", (click)="checkVoucher(code, cart)")
                     i.glyphicon.glyphicon-ok
           .text-right
-            p.text-muted.font-italic.buffer-bottom-20 Total:
+            p.text-muted.font-italic.buffer-bottom-20([ngClass]="{'not-on-sale-price': isOnSale}") Total:
               span.font-weight-bold {{cart?.total | currency: cart?.currency: true}}
+            p.text-muted.font-italic.buffer-bottom-20.on-sale-price("*ngIf"="isOnSale") New Total:
+              span.font-weight-bold {{total | currency: cart?.currency: true}}
             button.btn.btn-success(type="button", (click)="checkout()") Buy!
 
-      h6.text-muted("*ngIf"="cart?.items.length === 0") You haven't buy anything yet :(
+      h6.text-muted("*ngIf"="cart?.items?.length === 0") You haven't buy anything yet :(

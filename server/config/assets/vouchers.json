@@ -1,1 +1,3 @@
-[ "123","456","789" ]
+[ { "code" :123, "discount": 5, "spendlimit": 0, "categories": []},
+{ "code" :456, "discount": 10, "spendlimit": 50, "categories": []},
+{ "code" :789, "discount": 15, "spendlimit": 75, "categories": [0,3]} ]

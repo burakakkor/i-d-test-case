@@ -1,7 +1,6 @@
 @import "../variables";
 
-.cart {
-  
+.cart {  
 
   .cart-items {
     color: $color-text-grey;  
@@ -14,6 +13,15 @@
 
   button {
     cursor: pointer;
+  }
+
+  .on-sale-price {
+    color: $color-text-on-sale !important;
+  }
+
+  .not-on-sale-price {
+    color: $color-text-not-on-sale !important;
+    text-decoration: line-through;
   }
 }
 

@@ -72,5 +72,40 @@ describe('API', () => {
 
   });
 
+  describe('/api/voucher', () => {
+
+    it('should return 200 OK on POST /api/voucher with valid voucher code', (done) => {
+      request
+        .post('/api/voucher')
+        .send({ code: "123", cart: {items: [{category: {id: 0}}, {category: {id: 1}}], total: 150}})
+        .expect(200, done);
+    });
+
+    it('should return 500 OK on POST /api/voucher with invalid voucher code', (done) => {
+      request
+        .post('/api/voucher')
+        .send({ code: "000", cart: {items: [{category: {id: 1}}], total: 150}})
+        .expect(500, done);
+    });
+
+    it('should return 200 OK with discount percentage on POST /api/voucher with valid voucher code', (done) => {
+      request
+        .post('/api/voucher')
+        .send({ code: "789", cart: {items: [{category: {id: 0}}], total: 150}})
+        .expect('Content-type','json')
+        .expect(200)
+        .end((err, result) => {
+
+            result.status.should.be.equal(200);
+            result.body.discount.should.be.above(0);
+
+            done();
+        });
+    });
+
+  });
+
 
 });
+
+

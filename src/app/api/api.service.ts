@@ -30,8 +30,8 @@ export class APIService {
                .catch(this.handleError);
 	}
 
-  checkVoucher(code): Promise<Response> {
-    return this.http.post(this.voucherUrl, {code: code})
+  checkVoucher(code, cart): Promise<any> {
+    return this.http.post(this.voucherUrl, {code: code, cart: cart})
                .toPromise()
                .then(response => response)
                .catch(this.handleError);

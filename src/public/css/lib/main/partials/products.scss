@@ -20,6 +20,10 @@
 
   .on-sale-price {
     color: $color-text-on-sale;
+  }
+
+  .not-on-sale-price {
+    color: $color-text-not-on-sale;
     text-decoration: line-through;
   }
 }

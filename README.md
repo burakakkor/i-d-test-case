@@ -21,17 +21,4 @@
 *and then we need to;*
 
     npm install
-
-
-*following terminal command is;*
-
-    npm start
-
-
-*gulp*
-
-    npm watch
-
-*following terminal command is;*
-
     npm start

@@ -1,13 +1,10 @@
 .container
-  .row.buffer-bottom-20
-    .col-md-4
-      input.form-control(type="text")
   .row.marketing
     .col-md-4.buffer-bottom-20("*ngFor"="let product of products")
       .product-box([ngClass]="{'on-sale-box': product.isOnSale}")
         h4 {{product.name}}
         h5 {{product.category.name}}
         p.float-left {{product.color}}
-        p.text-right.float-right("*ngIf"="product.isOnSale") {{product.salePrice | currency: product.currency: true}}
-        p.text-right.float-right.pr-1([ngClass]="{'on-sale-price': product.isOnSale}") {{product.price | currency: product.currency: true}}
+        p.text-right.float-right.on-sale-price("*ngIf"="product.isOnSale") {{product.salePrice | currency: product.currency: true}}
+        p.text-right.float-right.pr-1([ngClass]="{'not-on-sale-price': product.isOnSale}") {{product.price | currency: product.currency: true}}
         button.btn.btn-success(type="button", (click)="addProductToCart(product.id)", [disabled]="product.stock === 0") Add to Cart

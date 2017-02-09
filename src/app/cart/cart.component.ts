@@ -14,6 +14,8 @@ import { ToasterService } from 'angular2-toaster';
 })
 export class CartComponent implements OnInit {
   cart: Cart;
+  total: number = 0;
+  isOnSale: boolean = false;
 
   constructor(
     private cartService: CartService,
@@ -31,24 +33,31 @@ export class CartComponent implements OnInit {
     this.apiService
         .removeProductFromCart(id)
         .then(cart => {
-          this.toasterService.pop('warning', 'Item removed from your cart!', '');
           this.cart = cart;
+          this.toasterService.pop('warning', 'Item removed from your cart!', '');
         });
   }
 
-  checkVoucher(code): void {
+  checkVoucher(code, cart): void {
     this.apiService
-      .checkVoucher(code)
+      .checkVoucher(code, cart)
       .then(response => {
+        var discount = parseInt(response.json().discount);
+
+        this.total = this.cart.total - discount; // new total
+        this.isOnSale = true; // enable new total text
+
         this.toasterService.pop('success', 'Discount!', '');
       })
       .catch(response => {
+        this.isOnSale = false; // enable new total text
+
         this.toasterService.pop('error', 'Invalid voucher code.', '');
       });
   }
 
   checkout(): void {
-    
+    this.toasterService.pop('warning', 'Soon to be implemented', '');
   }
 
   ngOnInit(): void {

@@ -17,12 +17,13 @@ var getJsonResult = function(items) {
 
   products = _(_data).keyBy('id').at(itemIds).value();
 
-  products = _.map(products, function (product) {
+  products = _.map(products, function (product) {    
     product.count = _.find(items, { id: product.id}).count;
+    product.total = product.price * product.count;
     return product;
   });
 
-  total = _.sumBy(products, 'price') * _.sumBy(products, 'count');
+  total = _.sumBy(products, 'total');
 
   return {items: products, total: total, currency: 'GBP'};
 }
@@ -128,9 +129,41 @@ module.exports = {
   },
   checkVoucher: (req, res) => {
     // code from body. check api.js
-    var code = req.body.code;
-    var statusCode = _.includes(_vouchers, code) ? 200 : 500;
+    var code = req.body.code,
+        cart = req.body.cart;
+    
+    // find voucher by code, check user entered valid one
+    var voucher = _.find(_vouchers, {code: parseInt(code)});
 
-    res.sendStatus(statusCode);
+    if (voucher) {
+      // get total
+      var total = cart.total;
+
+      // get all selected items category ids
+      var categoryIds = _.map(cart.items, 'category.id');
+
+      // discount default value
+      var discount = 0;
+
+      if (voucher.categories.length > 0) {
+        // if selected item is in voucher category list
+        var isIncludeCategory = _.intersection(voucher.categories, categoryIds).length > 0;
+
+        // And total should be over of voucher.spendlimit and then we could apply discount 
+        var isOverSpendLimit = total >= voucher.spendlimit;
+        
+        if (isIncludeCategory && isOverSpendLimit) {
+          discount = voucher.discount;
+        }
+      }
+      else {
+        discount = voucher.discount;
+      }
+
+      res.status(200).json({discount: discount})
+    }
+    else {
+      res.sendStatus(500);
+    }
   }
 }

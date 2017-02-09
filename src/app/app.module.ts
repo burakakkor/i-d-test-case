@@ -12,6 +12,7 @@ import { CartComponent } from './cart/cart.component';
 
 import { ProductService } from './product/product.service';
 import { CartService }  from './cart/cart.service';
+import { APIService } from './api/api.service';
 
 @NgModule({
   imports: [
@@ -22,7 +23,7 @@ import { CartService }  from './cart/cart.service';
     AppRoutingModule
   ],
   declarations: [ AppComponent, ProductComponent, CartComponent ],
-  providers:    [ ProductService, CartService ],
+  providers:    [ ProductService, CartService, APIService ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

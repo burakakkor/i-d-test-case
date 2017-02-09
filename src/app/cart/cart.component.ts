@@ -3,6 +3,7 @@ import { Router }            from '@angular/router';
 
 import { Cart }           from './cart';
 import { CartService }    from './cart.service';
+import { APIService } from '../api/api.service';
 
 @Component({
   selector: 'cart',
@@ -14,16 +15,22 @@ export class CartComponent implements OnInit {
 
   constructor(
     private cartService: CartService,
+    private apiService: APIService,
     private router: Router) { }
 
   getCart(): void {
     this.cartService
         .getCart()
         .then(cart => {
-          console.log(cart);
           this.cart = cart;
           console.log(this.cart);
         });
+  }
+
+  removeProductFromCart(id): void {
+    this.apiService
+        .removeProductFromCart(id)
+        .then(response => response); //TODO:notify
   }
 
   ngOnInit(): void {

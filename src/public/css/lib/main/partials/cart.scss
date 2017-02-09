@@ -1,0 +1,14 @@
+@import "../variables";
+
+.cart {
+  color: $color-text-grey;  
+
+  li {
+    padding: 5px;
+    background-color: $color-box-grey;
+  }
+
+  button {
+    cursor: pointer;
+  }
+}

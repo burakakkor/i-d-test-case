@@ -5,4 +5,4 @@
         h4 {{product.name}}
         h6.float-left {{product.color}}
         p.text-right.float-right {{product.price | currency: product.currency: true}}
-        button.btn.btn-success(type="button", (click)="addProductToCart(product)") Add to Cart
+        button.btn.btn-success(type="button", (click)="addProductToCart(product.id)", [disabled]="product.stock === 0") Add to Cart

@@ -9,38 +9,99 @@ module.exports = {
   getData: (req, res) => {
     res.json(_data);
   },
-  getCart: (req, res) => {  
+  getCart: (req, res) => {
     var cookies = new Cookies(req, res);
     var cart = cookies.get("cart");
 
-    res.json(cart ? cart : {"items": []});
+    var items = [], itemIds = [], products = [], total = 0;
+
+    if (cart) {
+      items = JSON.parse(cart).items;
+      itemIds = _.map(items, 'id');
+
+      products = _(_data).keyBy('id').at(itemIds).value();
+
+      products = _.map(products, function (product) {
+        product.count = _.find(items, { id: product.id}).count;
+        return product;
+      });
+
+      total = _.sumBy(products, 'price');
+    }
+
+    res.json({items: products, total: total, currency: 'GBP'});
   },
   postCart: (req, res) => {
     var cookies = new Cookies(req, res);
     var cart = cookies.get("cart");
 
-    var product = req.body;
+    var items = [];
+
+    // if cart is already in cookie, parse products from it.
+    if (cart) {
+      items = JSON.parse(cart).items;
+    }
+
+    // id from body. check api.js
+    var id = req.body.id;
 
     // checking if we have that product in our dataset and it should has to be in stock.
-    var _product = _.find(_data, {id: product.id});
+    var originalProduct = _.find(_data, {id: id});
 
-    if (_product && _product.stock > 0) {
+    if (originalProduct && originalProduct.stock > 0) {
 
-      // If cookie is empty, create new one.
-      if (!cart) {
-        cart = { items: [] };
+      // add new item to list
+      var item = _.find(items, {id: id});
+
+      if (!item) {
+        items.push({id: originalProduct.id, count: 1});
+      }
+      else {
+        // increate count
+        item.count++;
       }
 
-      var _cart = JSON.parse(cart);
-      console.log(_cart);
-      _cart.items.push(_product);
-      console.log(JSON.stringify(_cart));
-      cookies.set("cart", JSON.stringify(_cart));
+      // update cookie.
+      cookies.set("cart", JSON.stringify({items: items}));
+    }
 
-      res.sendStatus(200);
+    res.sendStatus(200);
+  },
+  deleteCart: (req, res) => {
+    var cookies = new Cookies(req, res);
+    var cart = cookies.get("cart");
+
+    var items = [];
+
+    if (cart) {
+      items = JSON.parse(cart).items;
     }
-    else {
-      res.sendStatus(500);
+
+    var params = req.params.id;
+
+    // id from params. check api.js
+    var id = parseInt(params.productId);
+
+    var originalProduct = _.find(_data, {id: id});
+
+    var cookieItem = _.find(items, {id: id});
+
+    console.log(cookieItem);
+
+    if (cookieItem) {
+      var cookieItemObj = JSON.parse(cookieItem);
     }
-  }
+
+    if (originalProduct && originalProduct.stock > 0) {
+
+      products = _.remove(products, { id: id });
+
+      console.log('düstü');
+
+      // update cookie.
+      //cookies.set("cart", JSON.stringify({products: products}));
+    }
+
+    res.sendStatus(200);
+  },
 }

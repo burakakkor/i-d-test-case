@@ -11,27 +11,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 require("rxjs/add/operator/toPromise");
-var ProductService = (function () {
-    function ProductService(http) {
+var APIService = (function () {
+    function APIService(http) {
         this.http = http;
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        this.dataUrl = 'api/data';
+        this.cartUrl = 'api/cart';
     }
-    ProductService.prototype.getProducts = function () {
-        return this.http.get(this.dataUrl)
+    APIService.prototype.addProductToCart = function (id) {
+        return this.http.post(this.cartUrl, { id: id })
             .toPromise()
-            .then(function (response) { return response.json(); })
+            .then(function (response) { return response; })
             .catch(this.handleError);
     };
-    ProductService.prototype.handleError = function (error) {
+    APIService.prototype.removeProductFromCart = function (id) {
+        return this.http.delete(this.cartUrl + '/' + id)
+            .toPromise()
+            .then(function (response) { return response; })
+            .catch(this.handleError);
+    };
+    APIService.prototype.handleError = function (error) {
         console.error('An error occurred', error);
         return Promise.reject(error.message || error);
     };
-    return ProductService;
+    return APIService;
 }());
-ProductService = __decorate([
+APIService = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [http_1.Http])
-], ProductService);
-exports.ProductService = ProductService;
-//# sourceMappingURL=product.service.js.map
+], APIService);
+exports.APIService = APIService;
+//# sourceMappingURL=api.service.js.map

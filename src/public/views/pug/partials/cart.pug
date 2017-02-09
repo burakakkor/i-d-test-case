@@ -2,5 +2,13 @@
   .row.marketing
     .col-lg-12
       h3.text-muted Cart
-    .col-lg-6("*ngFor"="let item of cart")
-      h4 {{item.name}}
+    .col-lg-12
+      ul.cart.col-sm-12("*ngIf"="cart?.items.length > 0")
+        li.row.buffer-bottom-10("*ngFor"="let cartItem of cart.items")
+          .col-sm-8.text-left
+            span {{cartItem.name}} x {{cartItem.count}}
+          .col-sm-4.text-right.pr-0
+            button.btn.btn-sm.btn-danger(type="button", (click)="removeProductFromCart(cartItem.id)") Remove
+      p.text-muted.text-right.font-italic Total:
+        span.font-weight-bold {{cart?.total | currency: cart?.currency: true}}
+      h4.text-muted("*ngIf"="cart?.items.length === 0") You haven't buy anything yet :(

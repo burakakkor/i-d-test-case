@@ -29,7 +29,8 @@
 
 
 *gulp*
-....npm watch
+
+    npm watch
 
 *following terminal command is;*
 

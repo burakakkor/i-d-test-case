@@ -1,24 +1,33 @@
 import { Injectable }    from '@angular/core';
 import { Headers, Http, Response, RequestOptions } from '@angular/http';
 
-import { Product } from './product';
+import { Cart } from '../cart/cart';
+import { Product } from '../product/product';
 
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
-export class ProductService {
+export class APIService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  private dataUrl = 'api/data';
+  private cartUrl = 'api/cart';
 
   constructor(private http: Http) { }
 
-  getProducts(): Promise<Product[]> {
-    return this.http.get(this.dataUrl)
+	addProductToCart(id): Promise<Response> {
+
+    return this.http.post(this.cartUrl, {id: id})
                .toPromise()
-               .then(response => response.json() as Product[])
+               .then(response => response)
                .catch(this.handleError);
   }
+
+	removeProductFromCart(id): Promise<Response> {
+    return this.http.delete(this.cartUrl + '/' + id)
+               .toPromise()
+               .then(response => response)
+               .catch(this.handleError);
+	}
 
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error);

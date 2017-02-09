@@ -1,9 +1,9 @@
 import { Injectable }    from '@angular/core';
 import { Headers, Http } from '@angular/http';
 
-import 'rxjs/add/operator/toPromise';
-
 import { Cart } from './cart';
+
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class CartService {
@@ -17,7 +17,7 @@ export class CartService {
     return this.http.get(this.cartUrl)
                .toPromise()
                .then(response => {
-                 console.log(response.json() as Cart);
+                 console.log(response.json());
                   return response.json() as Cart;
                })
                .catch(this.handleError);

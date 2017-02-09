@@ -3,6 +3,7 @@ import { Router }            from '@angular/router';
 
 import { Product }           from './product';
 import { ProductService }    from './product.service';
+import { APIService } from '../api/api.service';
 
 @Component({
   selector: 'products',
@@ -15,6 +16,7 @@ export class ProductComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
+    private apiService: APIService,
     private router: Router) { }
 
   getProducts(): void {
@@ -24,8 +26,9 @@ export class ProductComponent implements OnInit {
   }
 
   addProductToCart(product): void {
-    this.productService
-        .addProductToCart(product);
+    this.apiService
+        .addProductToCart(product)
+        .then(response => response); //TODO:notify
   }
 
   ngOnInit(): void {

@@ -11,27 +11,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 require("rxjs/add/operator/toPromise");
-var ProductService = (function () {
-    function ProductService(http) {
+var CartService = (function () {
+    function CartService(http) {
         this.http = http;
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        this.dataUrl = 'api/data';
+        this.cartUrl = 'api/cart';
     }
-    ProductService.prototype.getProducts = function () {
-        return this.http.get(this.dataUrl)
+    CartService.prototype.getCart = function () {
+        return this.http.get(this.cartUrl)
             .toPromise()
-            .then(function (response) { return response.json(); })
+            .then(function (response) {
+            console.log(response.json());
+            return response.json();
+        })
             .catch(this.handleError);
     };
-    ProductService.prototype.handleError = function (error) {
+    CartService.prototype.handleError = function (error) {
         console.error('An error occurred', error);
         return Promise.reject(error.message || error);
     };
-    return ProductService;
+    return CartService;
 }());
-ProductService = __decorate([
+CartService = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [http_1.Http])
-], ProductService);
-exports.ProductService = ProductService;
-//# sourceMappingURL=product.service.js.map
+], CartService);
+exports.CartService = CartService;
+//# sourceMappingURL=cart.service.js.map

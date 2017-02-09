@@ -10,39 +10,42 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var product_service_1 = require("./product.service");
+var cart_service_1 = require("./cart.service");
 var api_service_1 = require("../api/api.service");
-var ProductComponent = (function () {
-    function ProductComponent(productService, apiService, router) {
-        this.productService = productService;
+var CartComponent = (function () {
+    function CartComponent(cartService, apiService, router) {
+        this.cartService = cartService;
         this.apiService = apiService;
         this.router = router;
     }
-    ProductComponent.prototype.getProducts = function () {
+    CartComponent.prototype.getCart = function () {
         var _this = this;
-        this.productService
-            .getProducts()
-            .then(function (products) { return _this.products = products; });
+        this.cartService
+            .getCart()
+            .then(function (cart) {
+            _this.cart = cart;
+            console.log(_this.cart);
+        });
     };
-    ProductComponent.prototype.addProductToCart = function (product) {
+    CartComponent.prototype.removeProductFromCart = function (id) {
         this.apiService
-            .addProductToCart(product)
+            .removeProductFromCart(id)
             .then(function (response) { return response; }); //TODO:notify
     };
-    ProductComponent.prototype.ngOnInit = function () {
-        this.getProducts();
+    CartComponent.prototype.ngOnInit = function () {
+        this.getCart();
     };
-    return ProductComponent;
+    return CartComponent;
 }());
-ProductComponent = __decorate([
+CartComponent = __decorate([
     core_1.Component({
-        selector: 'products',
+        selector: 'cart',
         moduleId: module.id,
-        templateUrl: '../../public/views/dist/partials/products.html'
+        templateUrl: '../../public/views/dist/partials/cart.html'
     }),
-    __metadata("design:paramtypes", [product_service_1.ProductService,
+    __metadata("design:paramtypes", [cart_service_1.CartService,
         api_service_1.APIService,
         router_1.Router])
-], ProductComponent);
-exports.ProductComponent = ProductComponent;
-//# sourceMappingURL=product.component.js.map
+], CartComponent);
+exports.CartComponent = CartComponent;
+//# sourceMappingURL=cart.component.js.map

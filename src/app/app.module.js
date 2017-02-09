@@ -15,6 +15,7 @@ var product_component_1 = require("./product/product.component");
 var cart_component_1 = require("./cart/cart.component");
 var product_service_1 = require("./product/product.service");
 var cart_service_1 = require("./cart/cart.service");
+var api_service_1 = require("./api/api.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -30,7 +31,7 @@ AppModule = __decorate([
             app_routing_module_1.AppRoutingModule
         ],
         declarations: [app_component_1.AppComponent, product_component_1.ProductComponent, cart_component_1.CartComponent],
-        providers: [product_service_1.ProductService, cart_service_1.CartService],
+        providers: [product_service_1.ProductService, cart_service_1.CartService, api_service_1.APIService],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

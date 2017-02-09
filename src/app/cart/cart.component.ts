@@ -21,16 +21,13 @@ export class CartComponent implements OnInit {
   getCart(): void {
     this.cartService
         .getCart()
-        .then(cart => {
-          this.cart = cart;
-          console.log(this.cart);
-        });
+        .then(cart => this.cart = cart);
   }
 
   removeProductFromCart(id): void {
     this.apiService
         .removeProductFromCart(id)
-        .then(response => response); //TODO:notify
+        .then(cart => this.cart = cart); //TODO:notify
   }
 
   ngOnInit(): void {

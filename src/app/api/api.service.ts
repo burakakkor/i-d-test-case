@@ -22,10 +22,10 @@ export class APIService {
                .catch(this.handleError);
   }
 
-	removeProductFromCart(id): Promise<Response> {
+	removeProductFromCart(id): Promise<Cart> {
     return this.http.delete(this.cartUrl + '/' + id)
                .toPromise()
-               .then(response => response)
+               .then(response => response.json() as Cart)
                .catch(this.handleError);
 	}
 

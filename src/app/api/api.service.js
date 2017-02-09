@@ -26,7 +26,7 @@ var APIService = (function () {
     APIService.prototype.removeProductFromCart = function (id) {
         return this.http.delete(this.cartUrl + '/' + id)
             .toPromise()
-            .then(function (response) { return response; })
+            .then(function (response) { return response.json(); })
             .catch(this.handleError);
     };
     APIService.prototype.handleError = function (error) {

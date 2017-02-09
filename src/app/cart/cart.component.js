@@ -22,15 +22,13 @@ var CartComponent = (function () {
         var _this = this;
         this.cartService
             .getCart()
-            .then(function (cart) {
-            _this.cart = cart;
-            console.log(_this.cart);
-        });
+            .then(function (cart) { return _this.cart = cart; });
     };
     CartComponent.prototype.removeProductFromCart = function (id) {
+        var _this = this;
         this.apiService
             .removeProductFromCart(id)
-            .then(function (response) { return response; }); //TODO:notify
+            .then(function (cart) { return _this.cart = cart; }); //TODO:notify
     };
     CartComponent.prototype.ngOnInit = function () {
         this.getCart();

@@ -20,10 +20,7 @@ var CartService = (function () {
     CartService.prototype.getCart = function () {
         return this.http.get(this.cartUrl)
             .toPromise()
-            .then(function (response) {
-            console.log(response.json());
-            return response.json();
-        })
+            .then(function (response) { return response.json(); })
             .catch(this.handleError);
     };
     CartService.prototype.handleError = function (error) {

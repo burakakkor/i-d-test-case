@@ -9,7 +9,22 @@ var getItemsFromCart = function(cart) {
   return JSON.parse(cart).items;
 }
 
+var getJsonResult = function(items) {
+  var itemIds = [], products = [], total = 0;
 
+  itemIds = _.map(items, 'id');
+
+  products = _(_data).keyBy('id').at(itemIds).value();
+
+  products = _.map(products, function (product) {
+    product.count = _.find(items, { id: product.id}).count;
+    return product;
+  });
+
+  total = _.sumBy(products, 'price') * _.sumBy(products, 'count');
+
+  return {items: products, total: total, currency: 'GBP'};
+}
 
 module.exports = {
   getData: (req, res) => {
@@ -19,24 +34,15 @@ module.exports = {
     var cookies = new Cookies(req, res);
     var cart = cookies.get("cart");
 
-    var items = [], itemIds = [], products = [], total = 0;
+    var items = [], result = {};;
 
     if (cart) {
       items = getItemsFromCart(cart);
 
-      itemIds = _.map(items, 'id');
-
-      products = _(_data).keyBy('id').at(itemIds).value();
-
-      products = _.map(products, function (product) {
-        product.count = _.find(items, { id: product.id}).count;
-        return product;
-      });
-
-      total = _.sumBy(products, 'price') * _.sumBy(products, 'count');
+      result = getJsonResult(items);
     }
 
-    res.json({items: products, total: total, currency: 'GBP'});
+    res.json(result);
   },
   postCart: (req, res) => {
     var cookies = new Cookies(req, res);
@@ -78,7 +84,7 @@ module.exports = {
     var cookies = new Cookies(req, res);
     var cart = cookies.get("cart");
 
-    var items = [], products = [], total = 0;
+    var items = [], result = {};
 
     // if cart is already in cookie, parse products from it.
     if (cart) {
@@ -91,43 +97,32 @@ module.exports = {
     // checking if we have that product in our dataset and it should has to be in stock.
     var originalProduct = _.find(_data, {id:id});
 
+    // double check
     if (originalProduct && originalProduct.stock > 0) {
 
       // add new item to list
       var item = _.find(items, {id: id});
 
       if (!item) {
+        // create new cart-item
         items.push({id: originalProduct.id, count: 1});
       }
       else {
         // decrease count
         item.count--;
 
+        // if item.count === 0 we need to clear it from items list.
         if (item.count === 0) {
-          console.log(items);
-          console.log(id);
-
-          _.pullAllBy(items, {id: id}, 'id');
-
-          console.log(items);
+          _.remove(items, {id:id});
         }
       }
 
-      var itemIds = _.map(items, 'id');
-
-      products = _(_data).keyBy('id').at(itemIds).value();
-
-      products = _.map(products, function (product) {
-        product.count = _.find(items, { id: product.id}).count;
-        return product;
-      });
-
-      total = _.sumBy(products, 'price') * _.sumBy(products, 'count');
+      result = getJsonResult(items);
     }
 
     // update cookie.
     cookies.set("cart", JSON.stringify({items: items}));
 
-    res.json({items: products, total: total, currency: 'GBP'});
+    res.json(result);
   },
 }

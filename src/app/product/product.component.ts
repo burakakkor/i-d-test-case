@@ -28,7 +28,10 @@ export class ProductComponent implements OnInit {
   addProductToCart(product): void {
     this.apiService
         .addProductToCart(product)
-        .then(response => response); //TODO:notify
+        .then(response => {
+
+          return response;
+        }); //TODO:notify
   }
 
   ngOnInit(): void {

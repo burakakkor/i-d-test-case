@@ -27,7 +27,9 @@ var ProductComponent = (function () {
     ProductComponent.prototype.addProductToCart = function (product) {
         this.apiService
             .addProductToCart(product)
-            .then(function (response) { return response; }); //TODO:notify
+            .then(function (response) {
+            return response;
+        }); //TODO:notify
     };
     ProductComponent.prototype.ngOnInit = function () {
         this.getProducts();

@@ -3,17 +3,19 @@
     .col-lg-12
       h3.text-muted Cart
     .col-lg-12
-      ul.cart.col-sm-12("*ngIf"="cart?.items.length > 0")
-        li.row.buffer-bottom-10("*ngFor"="let cartItem of cart.items")
-          .col-sm-8.text-left
-            span {{cartItem.name}} x
-              span.font-weight-bold {{cartItem.count}}
-          .col-sm-4.text-right.pr-0
-            button.btn.btn-sm.btn-danger(type="button", (click)="removeProductFromCart(cartItem.id)")
-              i.glyphicon.glyphicon-minus
-      p.text-muted.text-right.font-italic Total:
-        span.font-weight-bold {{cart?.total | currency: cart?.currency: true}}
-      
-      .checkout.text-right.buffer-top-20
-        button.btn.btn-success(type="button", (click)="checkout()") Buy!
-      h4.text-muted("*ngIf"="cart?.items.length === 0") You haven't buy anything yet :(
+      .cart("*ngIf"="cart?.items.length > 0")
+        ul.cart-items.col-sm-12
+          li.row.buffer-bottom-10("*ngFor"="let cartItem of cart.items")
+            .col-sm-8.text-left
+              span {{cartItem.name}} x
+                span.font-weight-bold {{cartItem.count}}
+            .col-sm-4.text-right.pr-0
+              button.btn.btn-sm.btn-danger(type="button", (click)="removeProductFromCart(cartItem.id)")
+                i.glyphicon.glyphicon-minus
+        p.text-muted.text-right.font-italic Total:
+          span.font-weight-bold {{cart?.total | currency: cart?.currency: true}}
+        
+        .checkout.text-right.buffer-top-20
+          button.btn.btn-success(type="button", (click)="checkout()") Buy!
+
+      h6.text-muted("*ngIf"="cart?.items.length === 0") You haven't buy anything yet :(

@@ -7,6 +7,8 @@
 @import "partials/products";
 @import "partials/footer";
 
+@import 'node_modules/angular2-toaster/toaster';
+
 html {
     position: relative;
     min-height: 100%;

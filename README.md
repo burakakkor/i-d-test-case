@@ -2,7 +2,6 @@
 
 **Travis** 
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/703637863792490c84ed12c6836a11a2)](https://www.codacy.com/app/burakakkor/i-d-test-case?utm_source=github.com&utm_medium=referral&utm_content=burakakkor/i-d-test-case&utm_campaign=badger)
 [![Build Status](https://travis-ci.org/burakakkor/i-d-test-case.svg?branch=master)](https://travis-ci.org/burakakkor/i-d-test-case)
 
 **Appveyor** 
@@ -12,6 +11,10 @@
 **Coveralls**
 
 [![Coverage Status](https://coveralls.io/repos/github/burakakkor/i-d-test-case/badge.svg?branch=master)](https://coveralls.io/github/burakakkor/i-d-test-case?branch=master)
+
+**Codacy**
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/703637863792490c84ed12c6836a11a2)](https://www.codacy.com/app/burakakkor/i-d-test-case?utm_source=github.com&utm_medium=referral&utm_content=burakakkor/i-d-test-case&utm_campaign=badger)
 
 ---
 

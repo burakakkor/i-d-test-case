@@ -16,6 +16,8 @@
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/703637863792490c84ed12c6836a11a2)](https://www.codacy.com/app/burakakkor/i-d-test-case?utm_source=github.com&utm_medium=referral&utm_content=burakakkor/i-d-test-case&utm_campaign=badger)
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Coverage/703637863792490c84ed12c6836a11a2)](https://www.codacy.com/app/burakakkor/i-d-test-case?utm_source=github.com&utm_medium=referral&utm_content=burakakkor/i-d-test-case&utm_campaign=Badge_Coverage)
+
 ---
 
 *build & run;*

@@ -12,6 +12,10 @@
 
 [![Coverage Status](https://coveralls.io/repos/github/burakakkor/i-d-test-case/badge.svg?branch=master)](https://coveralls.io/github/burakakkor/i-d-test-case?branch=master)
 
+**Codacy**
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/703637863792490c84ed12c6836a11a2)](https://www.codacy.com/app/burakakkor/i-d-test-case?utm_source=github.com&utm_medium=referral&utm_content=burakakkor/i-d-test-case&utm_campaign=badger)
+
 ---
 
 *build & run;*
